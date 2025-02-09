@@ -2,7 +2,6 @@
 
 void sa(t_stack_a **stack_a)
 {
-    t_stack_a *tmp;
     t_stack_a *first;
     t_stack_a *second;
 
@@ -20,7 +19,6 @@ void sa(t_stack_a **stack_a)
 
 void sb(t_stack_b **stack_b)
 {
-    t_stack_b *tmp;
     t_stack_b *first;
     t_stack_b *second;
 
