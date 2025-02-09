@@ -1,10 +1,10 @@
 #include "push_swap.h"
 
-t_stack_b    *new_node_b(int value)
+t_stack    *new_node(int value)
 {
-    t_stack_b    *node;
+    t_stack    *node;
 
-    node = (t_stack_b *)malloc(sizeof(t_stack_b));
+    node = (t_stack *)malloc(sizeof(t_stack));
     if (!node)
         return (NULL);
     node->value = value;
@@ -12,7 +12,7 @@ t_stack_b    *new_node_b(int value)
     return (node);
 }
 
-void    add_front_b(t_stack_b **stack, t_stack_b *new_node)
+void    add_front(t_stack **stack, t_stack *new_node)
 {
     if (!stack || !new_node)
         return ;
@@ -20,9 +20,9 @@ void    add_front_b(t_stack_b **stack, t_stack_b *new_node)
     *stack = new_node;
 }
 
-void    add_back_b(t_stack_b **stack, t_stack_b *new_node)
+void    add_back(t_stack **stack, t_stack *new_node)
 {
-    t_stack_b    *current;
+    t_stack    *current;
 
     if (!*stack)
     {
@@ -35,10 +35,22 @@ void    add_back_b(t_stack_b **stack, t_stack_b *new_node)
     current->next = new_node;
 }
 
-int    stack_size_b(t_stack_b *stack)
+void    free_stack(t_stack *stack)
+{
+    t_stack    *tmp;
+
+    while (stack)
+    {
+        tmp = stack;
+        stack = stack->next;
+        free(tmp);
+    }
+}
+
+int    stack_size(t_stack *stack)
 {
     int        size;
-    t_stack_b    *current;
+    t_stack    *current;
 
     size = 0;
     current = stack;
@@ -48,15 +60,4 @@ int    stack_size_b(t_stack_b *stack)
         current = current->next;
     }
     return (size);
-}
-void    free_stack_b(t_stack_b *stack)
-{
-    t_stack_b    *tmp;
-
-    while (stack)
-    {
-        tmp = stack;
-        stack = stack->next;
-        free(tmp);
-    }
 }

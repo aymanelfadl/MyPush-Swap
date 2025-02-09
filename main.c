@@ -1,8 +1,8 @@
 #include "push_swap.h"
 
-void print_stack_a(t_stack_a *stack)
+void print_stack(t_stack *stack)
 {
-    t_stack_a *temp = stack;
+    t_stack *temp = stack;
     while (temp)
     {
         printf("%d -> ", temp->value);
@@ -11,36 +11,31 @@ void print_stack_a(t_stack_a *stack)
     printf("NULL\n");
 }
 
-void print_stack_b(t_stack_b *stack)
-{
-    t_stack_b *temp = stack;
-    while (temp)
-    {
-        printf("%d -> ", temp->value);
-        temp = temp->next;
-    }
-    printf("NULL\n");
-}
 int main(void)
 {
-    t_stack_a *stack_a = NULL;
-    t_stack_b *stack_b = NULL;
+    t_stack *stack_a = NULL;
+    t_stack *stack_b = NULL;
 
-    add_back_a(&stack_a, new_node_a(1));
-    add_back_a(&stack_a, new_node_a(2));
-    add_back_a(&stack_a, new_node_a(3));
-    add_back_a(&stack_a, new_node_a(4));
+    add_back(&stack_a, new_node(1));
+    add_back(&stack_a, new_node(2));
+    add_back(&stack_a, new_node(3));
+    add_back(&stack_a, new_node(4));
+
+    add_back(&stack_b, new_node(1));
+    add_back(&stack_b, new_node(2));
+    add_back(&stack_b, new_node(3));
+    add_back(&stack_b, new_node(4));
 
     printf("Before {A}:\n");
-    print_stack_a(stack_a);
+    print_stack(stack_a);
     
     sa(&stack_a, 1);
 
     printf("After {A}:\n");
-    print_stack_a(stack_a);
+    print_stack(stack_a);
     
-    free_stack_b(stack_b);
-    free_stack_a(stack_a);
+    free_stack(stack_b);
+    free_stack(stack_a);
 
     return 0;
 }

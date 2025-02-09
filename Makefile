@@ -2,7 +2,7 @@ NAME = push_swap
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
-SRCS = main.c stack_a_utilis.c stack_b_utilis.c swap_stacks.c rotate_stacks.c push_stacks.c \
+SRCS = main.c stack_utils.c swap_stacks.c rotate_stacks.c push_stacks.c \
 	reverse_rotate_stacks.c
 OBJS = $(SRCS:.c=.o)
 
