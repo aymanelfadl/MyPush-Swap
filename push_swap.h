@@ -31,16 +31,16 @@ int         stack_size_b(t_stack_b *stack);
 void        print_stack_a(t_stack_a *stack);
 void        print_stack_b(t_stack_b *stack);
 
-void        sa(t_stack_a **stack_a);
-void        sb(t_stack_b **stack_b);
+void        sa(t_stack_a **stack_a, int print);
+void        sb(t_stack_b **stack_b, int print);
 void        ss(t_stack_a **stack_a, t_stack_b **stack_b);
 void        pa(t_stack_a **stack_a, t_stack_b **stack_b);
 void        pb(t_stack_a **stack_a, t_stack_b **stack_b);
-void        ra(t_stack_a **stack_a);
-void        rb(t_stack_b **stack_b);
+void        ra(t_stack_a **stack_a, int print);
+void        rb(t_stack_b **stack_b, int print);
 void        rr(t_stack_a **stack_a, t_stack_b **stack_b);
-void        rra(t_stack_a **stack_a);
-void        rrb(t_stack_b **stack_b);
+void        rra(t_stack_a **stack_a, int print);
+void        rrb(t_stack_b **stack_b, int print);
 void        rrr(t_stack_a **stack_a, t_stack_b **stack_b);
 
 
