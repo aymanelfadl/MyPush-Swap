@@ -6,8 +6,8 @@ void print_stack(t_stack *stack)
     while (temp)
     {
         printf("value: %d -> ", temp->value);
-        printf("\n");
         printf("index: %d -> ", temp->index);
+        printf("\n");
         temp = temp->next;
     }
     printf("NULL\n");

@@ -56,7 +56,7 @@ void set_index(t_stack **stack)
         i = 0;
         while (temp->value != sorted_array[i])
             i++;
-        temp->index = i;
+        temp->index = i+1;
         temp = temp->next;
     }
     free(sorted_array);

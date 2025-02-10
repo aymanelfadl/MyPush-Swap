@@ -3,7 +3,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
 SRCS = main.c stack_utils.c swap_stacks.c rotate_stacks.c push_stacks.c \
-	reverse_rotate_stacks.c args_parser.c args_parser_utils.c value_position.c
+	reverse_rotate_stacks.c args_parser.c args_parser_utils.c values_position.c
 
 OBJS = $(SRCS:.c=.o)
 
