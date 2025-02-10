@@ -16,16 +16,20 @@ void print_stack(t_stack *stack)
 int main(int argc, char *argv[])
 {
     t_stack *stack_a;
-    // t_stack *stack_b;
+    t_stack *stack_b;
 
     stack_a = NULL;
-    // stack_b = NULL;
+    stack_b = NULL;
     
     if (argc == 1)
         return 0;
     args_parser(argc - 1, &argv[1], &stack_a);
     set_index(&stack_a);
+    push_to_stack_b(&stack_a, &stack_b);
+    printf("stack_a:\n");
     print_stack(stack_a);
+    printf("stack_b:\n");
+    print_stack(stack_b);
 
     
 }

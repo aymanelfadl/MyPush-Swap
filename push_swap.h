@@ -50,4 +50,7 @@ void    error_cleanup(char **values, t_stack *stack_a);
 
 // sorting functions:
 void set_index(t_stack **stack);
+void push_to_stack_b(t_stack **stack_a, t_stack **stack_b);
+
+
 #endif
