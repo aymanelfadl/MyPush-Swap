@@ -40,5 +40,7 @@ void   			rrr(t_stack **stack_a, t_stack **stack_b);
 
 // parsing functions: 
 void    args_parser(int  argc, char *argv[], t_stack **stack_a);
+long    my_atoi(const char *str);
+void    error_cleanup(char **values, t_stack *stack_a);
 
 #endif

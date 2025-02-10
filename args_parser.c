@@ -1,5 +1,16 @@
 #include "push_swap.h"
 
+int has_value(t_stack *stack, int value)
+{
+    while (stack)
+    {
+        if (stack->value == value)
+            return (1);
+        stack = stack->next;
+    }
+    return (0);
+}
+
 int is_valide_number(char *value)
 {
     int i;
@@ -23,23 +34,25 @@ int is_valide_number(char *value)
 void create_value(char **values, t_stack **stack_a)
 {
     int i;
-    
+    long value;
+
     i = -1;
     if (!values)
         return;
     while (values[++i] != NULL)
     {
         if (is_valide_number(values[i]))
-            add_back(stack_a, new_node(ft_atoi((const char *)values[i])));
-        else
         {
-            write(2, "Error\n", 6);
-            while (values[i])
-                free(values[i++]);
-            free(values);
-			free_stack(*stack_a);
-            exit(EXIT_FAILURE);
+            value = my_atoi(values[i]);
+            if (value > INT_MAX || value < INT_MIN)
+                error_cleanup(values, *stack_a);
+            if (!has_value(*stack_a, (int)value))
+                add_back(stack_a, new_node((int)value));
+            else
+                error_cleanup(values, *stack_a);
         }
+        else
+            error_cleanup(values, *stack_a);
     }
     i = 0;
     while (values[i])
@@ -57,10 +70,7 @@ void args_parser(int argc, char *argv[], t_stack **stack_a)
     {
         values = ft_split(argv[i], ' ');
         if (!values)
-        {
-            write(2, "Error\n", 6);
-            exit(1);
-        }
+            error_cleanup(NULL, *stack_a);
         create_value(values, stack_a);
         i++;
     }
