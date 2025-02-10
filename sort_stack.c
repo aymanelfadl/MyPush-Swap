@@ -1,5 +1,37 @@
 #include "push_swap.h"
 
+int	get_max_index(t_stack *stack)
+{
+	int	max;
+
+	if (!stack)
+		return (0);
+	max = stack->index;
+	while (stack)
+	{
+		if (stack->index > max)
+			max = stack->index;
+		stack = stack->next;
+	}
+	return (max);
+}
+
+void	sort_three(t_stack **stack_a)
+{
+	int	max;
+
+	if (!*stack_a || !(*stack_a)->next || !(*stack_a)->next->next)
+		return ;
+	max = get_max_index(*stack_a);
+	if ((*stack_a)->index == max)
+		ra(stack_a, 1);
+	else if ((*stack_a)->next->index == max)
+		rra(stack_a, 1);
+	if ((*stack_a)->index > (*stack_a)->next->index)
+		sa(stack_a, 1);
+}
+
+
 void push_to_stack_b(t_stack **stack_a, t_stack **stack_b)
 {
     int mid;

@@ -26,6 +26,7 @@ int main(int argc, char *argv[])
     args_parser(argc - 1, &argv[1], &stack_a);
     set_index(&stack_a);
     push_to_stack_b(&stack_a, &stack_b);
+    sort_three(&stack_a);
     printf("stack_a:\n");
     print_stack(stack_a);
     printf("stack_b:\n");
