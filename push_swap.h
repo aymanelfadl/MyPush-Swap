@@ -9,6 +9,11 @@
 typedef struct s_stack
 {
     int                value;
+    int                index;
+    int                position;
+    int                target_position;
+    int                cost_a;
+    int                cost_b;
     struct s_stack   *next;
 }    t_stack;
 
