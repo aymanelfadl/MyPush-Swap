@@ -48,4 +48,6 @@ void    args_parser(int  argc, char *argv[], t_stack **stack_a);
 long    my_atoi(const char *str);
 void    error_cleanup(char **values, t_stack *stack_a);
 
+// sorting functions:
+void set_index(t_stack **stack);
 #endif
