@@ -1,5 +1,18 @@
 #include "push_swap.h"
 
+int	is_sorted(t_stack *stack)
+{
+	if (!stack)
+		return (0);
+	while (stack->next)
+	{
+		if (stack->value > stack->next->value)
+			return (0);
+		stack = stack->next;
+	}
+	return (1);
+}
+
 void push_to_stack_b(t_stack **stack_a, t_stack **stack_b)
 {
     int mid;
@@ -40,4 +53,43 @@ void	sort_three(t_stack **stack_a)
 		rra(stack_a, 1);
 	if ((*stack_a)->index > (*stack_a)->next->index)
 		sa(stack_a, 1);
+}
+
+void	shift_stack(t_stack **stack_a)
+{
+	int	lowest_pos;
+	int	size;
+
+	size = stack_size(*stack_a);
+	lowest_pos = get_lowest_position(stack_a);
+	if (lowest_pos > size / 2)
+	{
+		while (lowest_pos < size)
+		{
+			rra(stack_a, 1);
+			lowest_pos++;
+		}
+	}
+	else
+	{
+		while (lowest_pos > 0)
+		{
+			ra(stack_a, 1);
+			lowest_pos--;
+		}
+	}
+}
+
+void	sort_stack(t_stack **stack_a, t_stack **stack_b)
+{
+	push_to_stack_b(stack_a, stack_b);
+	sort_three(stack_a);
+	while (*stack_b)
+	{
+		set_target_position(stack_a, stack_b);
+		set_cost(stack_a, stack_b);
+		shortest_path(stack_a, stack_b);
+	}
+	if (!is_sorted(*stack_a))
+		shift_stack(stack_a);
 }

@@ -43,6 +43,29 @@ int find_target_index(t_stack **stack_a, int b_index)
     }
     return (target_index);
 }
+int	get_lowest_position(t_stack **stack)
+{
+	t_stack	*tmp;
+	int		lowest_index;
+	int		lowest_position;
+
+	tmp = *stack;
+	lowest_index = tmp->index;
+	set_position(stack);
+	lowest_position = tmp->position;
+    tmp = tmp->next;
+	while (tmp)
+	{
+		if (tmp->index < lowest_index)
+		{
+			lowest_index = tmp->index;
+			lowest_position = tmp->position;
+		}
+		tmp = tmp->next;
+	}
+	return (lowest_position);
+}
+
 
 int get_position_by_index(t_stack **stack, int index)
 {

@@ -5,6 +5,7 @@
 # include <unistd.h>
 # include "libft/libft.h"
 # include <stdio.h>
+# include <math.h>
 
 typedef struct s_stack
 {
@@ -55,5 +56,10 @@ void	sort_three(t_stack **stack);
 int	    get_max_index(t_stack *stack);
 void    set_target_position(t_stack **stack_a, t_stack **stack_b);
 void    set_cost(t_stack **a, t_stack **b);
+void	shortest_path(t_stack **a, t_stack **b);
+void	sort_stack(t_stack **stack_a, t_stack **stack_b);
+int	    get_lowest_position(t_stack **stack);
+int	abs_v(int n);
+
 
 #endif

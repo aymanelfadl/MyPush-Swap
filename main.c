@@ -28,10 +28,7 @@ int main(int argc, char *argv[])
     if (argc == 1)
         return 0;
     args_parser(argc - 1, &argv[1], &stack_a);
-    set_index(&stack_a);
-    push_to_stack_b(&stack_a, &stack_b);
-    set_target_position(&stack_a, &stack_b);
-    set_cost(&stack_a, &stack_b);
+    sort_stack(&stack_a, &stack_b);
     printf("stack_a:\n");
     print_stack(stack_a);
     printf("stack_b:\n");
