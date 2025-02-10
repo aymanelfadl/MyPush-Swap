@@ -1,23 +1,26 @@
 #include "push_swap.h"
 
-int main(int argc, char *argv[])
+void print_stack(t_stack *stack)
 {
-    t_stack *stack_a;
-    
-    if (argc < 2)
-        return (1);
-        
-    stack_a = NULL;
-    args_parser(argc - 1, &argv[1], &stack_a); 
-    
-    t_stack *temp = stack_a;
+    t_stack *temp = stack;
     while (temp)
     {
-        printf("%d\n", temp->value);
+        printf("%d -> ", temp->value);
         temp = temp->next;
     }
+    printf("NULL\n");
+}
 
-    free_stack(stack_a);
+int main(int argc, char *argv[])
+{
+    int i;
+    t_stack *stack_a;
+    t_stack *stack_b;
 
-    return (0);
+    stack_a = NULL;
+    stack_b = NULL;
+    if (argc == 1)
+        return 0;
+    args_parser(argc, argv, stack_a);
+    
 }

@@ -11,7 +11,7 @@ int has_value(t_stack *stack, int value)
     return (0);
 }
 
-int is_valide_number(char *value)
+static int is_valide_number(char *value)
 {
     int i;
     
@@ -31,7 +31,7 @@ int is_valide_number(char *value)
     return (1);
 }
 
-void create_value(char **values, t_stack **stack_a)
+static void create_value(char **values, t_stack **stack_a)
 {
     int i;
     long value;
