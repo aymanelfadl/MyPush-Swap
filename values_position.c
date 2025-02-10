@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-int *stack_to_array(t_stack *stack)
+static int *stack_to_array(t_stack *stack)
 {
     int *array;
     int i;
@@ -18,7 +18,7 @@ int *stack_to_array(t_stack *stack)
     return array;
 }
 
-void sort_array(int *array, int size)
+static void sort_array(int *array, int size)
 {
     int i;
     int j;
