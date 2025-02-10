@@ -53,4 +53,6 @@ void    set_index(t_stack **stack);
 void    push_to_stack_b(t_stack **stack_a, t_stack **stack_b);
 void	sort_three(t_stack **stack);
 int	    get_max_index(t_stack *stack);
+
+
 #endif
