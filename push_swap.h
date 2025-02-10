@@ -38,4 +38,7 @@ void   			rrb(t_stack **stack_b, int print);
 void   			rrr(t_stack **stack_a, t_stack **stack_b);
 
 
+// parsing functions: 
+void    args_parser(int  argc, char *argv[], t_stack **stack_a);
+
 #endif
