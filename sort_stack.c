@@ -80,6 +80,7 @@ void	shift_stack(t_stack **stack_a)
 		}
 	}
 }
+
 void sort_stack(t_stack **stack_a, t_stack **stack_b)
 {
     if (stack_size(*stack_a) == 2)
