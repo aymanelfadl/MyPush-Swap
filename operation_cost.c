@@ -9,10 +9,13 @@ int abs_v(int n)
 
 void set_cost(t_stack **a, t_stack **b)
 {
-    t_stack *tmp_b = *b;
-    int size_a = stack_size(*a);
-    int size_b = stack_size(*b);
+    t_stack *tmp_b;
+    int size_a;
+    int size_b;
 
+    tmp_b = *b;
+    size_a = stack_size(*a);
+    size_b = stack_size(*b);
     while (tmp_b)
     {
         if (tmp_b->position > size_b / 2)
@@ -75,19 +78,24 @@ void apply_op(t_stack **a, t_stack **b, int cost_a, int cost_b)
 
 void shortest_path(t_stack **a, t_stack **b)
 {
-    t_stack *tmp = *b;
-    int shortest_path = INT_MAX;
-    int cost_a = 0;
-    int cost_b = 0;
+    t_stack *tmp;
+    int shortest_path;
+    int cost_a;
+    int cost_b;
+    int total_cost;
 
+    tmp = *b;
+    shortest_path = INT_MAX;
+    cost_a = 0;
+    cost_b = 0;
     while (tmp)
     {
-        int total_cost = abs_v(tmp->cost_a) + abs_v(tmp->cost_b);
+        total_cost = abs_v(tmp->cost_a) + abs_v(tmp->cost_b);
         if (total_cost < shortest_path)
         {
-            shortest_path = total_cost;
             cost_a = tmp->cost_a;
             cost_b = tmp->cost_b;
+            shortest_path = total_cost;
         }
         tmp = tmp->next;
     }

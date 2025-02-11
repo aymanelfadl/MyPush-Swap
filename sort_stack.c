@@ -15,10 +15,13 @@ int	is_sorted(t_stack *stack)
 
 void push_to_stack_b(t_stack **stack_a, t_stack **stack_b)
 {
-    int mid = stack_size(*stack_a) / 2;
-    int pushed = 0;
-    int size = stack_size(*stack_a);
+    int mid;
+    int pushed;
+    int size;
 
+    size = stack_size(*stack_a);
+    mid = size / 2;
+    pushed = 0;
     while (pushed < mid && size > 3)
     {
         if ((*stack_a)->index < mid)
@@ -27,12 +30,9 @@ void push_to_stack_b(t_stack **stack_a, t_stack **stack_b)
             pushed++;
         }
         else
-        {
             ra(stack_a, 1);
-        }
         size = stack_size(*stack_a); 
     }
-    
     while (size > 3)
     {
         pb(stack_a, stack_b);
