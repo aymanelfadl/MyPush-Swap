@@ -28,6 +28,8 @@ int main(int argc, char *argv[])
     if (argc == 1)
         return 0;
     args_parser(argc - 1, &argv[1], &stack_a);
+    set_index(&stack_a);
+    set_index(&stack_b);
     sort_stack(&stack_a, &stack_b);
     printf("stack_a:\n");
     print_stack(stack_a);

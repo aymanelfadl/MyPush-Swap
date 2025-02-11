@@ -66,31 +66,36 @@ void	apply_op(t_stack **a, t_stack **b, int cost_a, int cost_b)
 	}
 	pa(a, b);
 }
-
-void	shortest_path(t_stack **a, t_stack **b)
+void shortest_path(t_stack **a, t_stack **b)
 {
-	t_stack	*tmp;
-	int		shortest;
-	int		cost_a;
-	int		cost_b;
+    t_stack *tmp;
+    int cheapest_cost;
+    int cost_a;
+    int cost_b;
+    int total_cost;
 
-	tmp = *b;
-	shortest = abs_v(tmp->cost_a) + abs_v(tmp->cost_b);
-	cost_a = tmp->cost_a;
-	cost_b = tmp->cost_b;
-	tmp = tmp->next;
-	while (tmp)
-	{
-		int current_cost = abs_v(tmp->cost_a) + abs_v(tmp->cost_b);
-		if (current_cost < shortest)
-		{
-			shortest = current_cost;
-			cost_a = tmp->cost_a;
-			cost_b = tmp->cost_b;
-		}
-		tmp = tmp->next;
-	}
-	apply_op(a, b, cost_a, cost_b);
+    tmp = *b;
+    cheapest_cost = INT_MAX;
+    while (tmp)
+    {
+        total_cost = abs_v(tmp->cost_a) + abs_v(tmp->cost_b);
+        if (total_cost < cheapest_cost)
+        {
+            cheapest_cost = total_cost;
+            cost_a = tmp->cost_a;
+            cost_b = tmp->cost_b;
+        }
+        else if (total_cost == cheapest_cost)
+        {
+            if (abs_v(tmp->cost_a) + abs_v(tmp->cost_b) < abs_v(cost_a) + abs_v(cost_b))
+            {
+                cost_a = tmp->cost_a;
+                cost_b = tmp->cost_b;
+            }
+        }
+        tmp = tmp->next;
+    }
+    apply_op(a, b, cost_a, cost_b);
 }
 
 

@@ -83,17 +83,45 @@ int get_position_by_index(t_stack **stack, int index)
 
 void set_target_position(t_stack **stack_a, t_stack **stack_b)
 {
-    t_stack *tmp_b;
-    int target_index;
+    t_stack *current_b;
+    t_stack *current_a;
+    t_stack *target;
+    int closest_bigger;
 
-    tmp_b = *stack_b;
-    set_position(stack_a);
-    set_position(stack_b);
-    target_index = 0;
-    while (tmp_b)
+    current_b = *stack_b;
+    while (current_b)
     {
-        target_index = find_target_index(stack_a, tmp_b->index);
-        tmp_b->target_position = target_index;
-        tmp_b = tmp_b->next;
+        closest_bigger = INT_MAX;
+        current_a = *stack_a;
+        target = NULL;
+        
+        while (current_a)
+        {
+            if (current_a->index > current_b->index && 
+                current_a->index < closest_bigger)
+            {
+                closest_bigger = current_a->index;
+                target = current_a;
+            }
+            current_a = current_a->next;
+        }
+        
+        if (!target)
+        {
+            current_a = *stack_a;
+            closest_bigger = INT_MAX;
+            while (current_a)
+            {
+                if (current_a->index < closest_bigger)
+                {
+                    closest_bigger = current_a->index;
+                    target = current_a;
+                }
+                current_a = current_a->next;
+            }
+        }
+        
+        current_b->target_position = target->position;
+        current_b = current_b->next;
     }
 }
