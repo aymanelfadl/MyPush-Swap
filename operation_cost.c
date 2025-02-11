@@ -25,15 +25,9 @@ void	set_cost(t_stack **a, t_stack **b)
 		tmp_b = tmp_b->next;
 	}
 }
-void	rotate_stacks(t_stack **a, t_stack **b, int *cost_a, int *cost_b)
+void	do_rotate_both(t_stack **a, t_stack **b, int *cost_a, int *cost_b)
 {
-	while (*cost_a < 0 && *cost_b < 0)
-	{
-		rrr(a, b);
-		(*cost_a)++;
-    	(*cost_b)++;
-	}
-    while (*cost_a > 0 && *cost_b > 0)
+	while (*cost_a > 0 && *cost_b > 0)
 	{
 		rr(a, b);
 		(*cost_a)--;
@@ -41,9 +35,23 @@ void	rotate_stacks(t_stack **a, t_stack **b, int *cost_a, int *cost_b)
 	}
 }
 
+void	do_reverse_rotate_both(t_stack **a, t_stack **b, int *cost_a,
+		int *cost_b)
+{
+	while (*cost_a < 0 && *cost_b < 0)
+	{
+		rrr(a, b);
+		(*cost_a)++;
+		(*cost_b)++;
+	}
+}
+
 void	apply_op(t_stack **a, t_stack **b, int cost_a, int cost_b)
 {
-    rotate_stacks(a, b, &cost_a, &cost_b);
+    if (cost_a < 0 && cost_b < 0)
+		do_reverse_rotate_both(a, b, &cost_a, &cost_b);
+	else if (cost_a > 0 && cost_b > 0)
+		do_rotate_both(a, b, &cost_a, &cost_b);
 	while (cost_b < 0)
 	{
 		rrb(b, 1);
@@ -68,33 +76,23 @@ void	apply_op(t_stack **a, t_stack **b, int cost_a, int cost_b)
 }
 void shortest_path(t_stack **a, t_stack **b)
 {
-    t_stack *tmp;
-    int cheapest_cost;
-    int cost_a;
-    int cost_b;
-    int total_cost;
+	t_stack	*tmp;
+	int		cheapest;
+	int		cost_a;
+	int		cost_b;
 
-    tmp = *b;
-    cheapest_cost = INT_MAX;
-    while (tmp)
-    {
-        total_cost = abs_v(tmp->cost_a) + abs_v(tmp->cost_b);
-        if (total_cost < cheapest_cost)
-        {
-            cheapest_cost = total_cost;
-            cost_a = tmp->cost_a;
-            cost_b = tmp->cost_b;
-        }
-        else if (total_cost == cheapest_cost)
-        {
-            if (abs_v(tmp->cost_a) + abs_v(tmp->cost_b) < abs_v(cost_a) + abs_v(cost_b))
-            {
-                cost_a = tmp->cost_a;
-                cost_b = tmp->cost_b;
-            }
-        }
-        tmp = tmp->next;
-    }
+	tmp = *b;
+	cheapest = INT_MAX;
+	while (tmp)
+	{
+		if (abs_v(tmp->cost_a) + abs_v(tmp->cost_b) < abs_v(cheapest))
+		{
+			cheapest = abs_v(tmp->cost_b) + abs_v(tmp->cost_a);
+			cost_a = tmp->cost_a;
+			cost_b = tmp->cost_b;
+		}
+		tmp = tmp->next;
+	}
     apply_op(a, b, cost_a, cost_b);
 }
 

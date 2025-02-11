@@ -15,34 +15,6 @@ void set_position(t_stack **stack)
     }
 }
 
-int find_target_index(t_stack **stack_a, int b_index)
-{
-    t_stack *temp;
-    int target_index;
-
-    temp = *stack_a;
-    if (!temp)
-        return (0);
-    target_index = temp->index;
-    while (temp)
-    {
-        if (temp->index > b_index && temp->index < target_index)
-            target_index = temp->index;
-        temp = temp->next;
-    }
-    if (target_index == (*stack_a)->index)
-    {
-        temp = *stack_a;
-        target_index = temp->index;
-        while (temp)
-        {
-            if (temp->index < target_index)
-                target_index = temp->index;
-            temp = temp->next;
-        }
-    }
-    return (target_index);
-}
 int	get_lowest_position(t_stack **stack)
 {
 	t_stack	*tmp;
@@ -66,62 +38,48 @@ int	get_lowest_position(t_stack **stack)
 	return (lowest_position);
 }
 
-
-int get_position_by_index(t_stack **stack, int index)
+int	find_target_position(t_stack **a, int b_idx, int target_idx, int target_pos)
 {
-    t_stack *temp;
+	t_stack	*tmp_a;
 
-    temp = *stack;
-    while (temp)
-    {
-        if (temp->index == index)
-            return (temp->position);
-        temp = temp->next;
-    }
-    return (0);
+	tmp_a = *a;
+	while (tmp_a)
+	{
+		if (tmp_a->index > b_idx && tmp_a->index < target_idx)
+		{
+			target_idx = tmp_a->index;
+			target_pos = tmp_a->position;
+		}
+		tmp_a = tmp_a->next;
+	}
+	if (target_idx != INT_MAX)
+		return (target_pos);
+	tmp_a = *a;
+	while (tmp_a)
+	{
+		if (tmp_a->index < target_idx)
+		{
+			target_idx = tmp_a->index;
+			target_pos = tmp_a->position;
+		}
+		tmp_a = tmp_a->next;
+	}
+	return (target_pos);
 }
 
-void set_target_position(t_stack **stack_a, t_stack **stack_b)
+void	set_target_position(t_stack **a, t_stack **b)
 {
-    t_stack *current_b;
-    t_stack *current_a;
-    t_stack *target;
-    int closest_bigger;
+	t_stack	*tmp_b;
+	int		target_pos;
 
-    current_b = *stack_b;
-    while (current_b)
-    {
-        closest_bigger = INT_MAX;
-        current_a = *stack_a;
-        target = NULL;
-        
-        while (current_a)
-        {
-            if (current_a->index > current_b->index && 
-                current_a->index < closest_bigger)
-            {
-                closest_bigger = current_a->index;
-                target = current_a;
-            }
-            current_a = current_a->next;
-        }
-        
-        if (!target)
-        {
-            current_a = *stack_a;
-            closest_bigger = INT_MAX;
-            while (current_a)
-            {
-                if (current_a->index < closest_bigger)
-                {
-                    closest_bigger = current_a->index;
-                    target = current_a;
-                }
-                current_a = current_a->next;
-            }
-        }
-        
-        current_b->target_position = target->position;
-        current_b = current_b->next;
-    }
+	tmp_b = *b;
+	set_position(a);
+	set_position(b);
+	target_pos = 0;
+	while (tmp_b)
+	{
+		target_pos = find_target_position(a, tmp_b->index, INT_MAX, target_pos);
+		tmp_b->target_position = target_pos;
+		tmp_b = tmp_b->next;
+	}
 }
