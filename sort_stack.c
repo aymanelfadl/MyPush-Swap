@@ -15,30 +15,31 @@ int	is_sorted(t_stack *stack)
 
 void push_to_stack_b(t_stack **stack_a, t_stack **stack_b)
 {
-    int mid;
-    int pushed;
+    int mid = stack_size(*stack_a) / 2;
+    int pushed = 0;
+    int size = stack_size(*stack_a);
 
-    if (!stack_a || !*stack_a)
-        return;
-
-    if (stack_size(*stack_a) <= 3)
-        return;
-
-    mid = stack_size(*stack_a) / 2;
-    pushed = 0;
-    while (pushed < mid && stack_size(*stack_a) > 3)
+    while (pushed < mid && size > 3)
     {
-        if ((*stack_a)->index <= mid)
+        if ((*stack_a)->index < mid)
         {
             pb(stack_a, stack_b);
             pushed++;
         }
         else
+        {
             ra(stack_a, 1);
+        }
+        size = stack_size(*stack_a); 
     }
-    while (stack_size(*stack_a) > 3)
+    
+    while (size > 3)
+    {
         pb(stack_a, stack_b);
+        size = stack_size(*stack_a);
+    }
 }
+
 
 void	sort_three(t_stack **stack_a)
 {
@@ -99,7 +100,8 @@ void sort_stack(t_stack **stack_a, t_stack **stack_b)
         set_target_position(stack_a, stack_b);
         set_cost(stack_a, stack_b);
         shortest_path(stack_a, stack_b);
-    }    
+    }
     if (!is_sorted(*stack_a))
         shift_stack(stack_a);
 }
+
