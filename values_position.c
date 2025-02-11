@@ -38,20 +38,24 @@ int	get_lowest_position(t_stack **stack)
 	return (lowest_position);
 }
 
-int	find_target_position(t_stack **a, int b_idx, int target_idx, int target_pos)
+int	find_target_position(t_stack **a, int stack_b_idx)
 {
 	t_stack	*tmp_a;
+    int    target_idx;
+    int    target_pos;
 
+    target_idx = INT_MAX;
+    target_pos = 0;
 	tmp_a = *a;
 	while (tmp_a)
 	{
-		if (tmp_a->index > b_idx && tmp_a->index < target_idx)
-		{
-			target_idx = tmp_a->index;
-			target_pos = tmp_a->position;
-		}
-		tmp_a = tmp_a->next;
-	}
+        if (get_smallest_bigger_node(*a, stack_b_idx)->index)
+        {
+            target_idx = get_smallest_bigger_node(*a, stack_b_idx)->index;
+            target_pos = get_smallest_bigger_node(*a, stack_b_idx)->position;
+        }
+        tmp_a = tmp_a->next;
+    }
 	if (target_idx != INT_MAX)
 		return (target_pos);
 	tmp_a = *a;
@@ -78,7 +82,7 @@ void	set_target_position(t_stack **a, t_stack **b)
 	target_pos = 0;
 	while (tmp_b)
 	{
-		target_pos = find_target_position(a, tmp_b->index, INT_MAX, target_pos);
+		target_pos = find_target_position(a, tmp_b->index);
 		tmp_b->target_position = target_pos;
 		tmp_b = tmp_b->next;
 	}

@@ -77,3 +77,17 @@ int	get_max_index(t_stack *stack)
 	}
 	return (max);
 }
+
+t_stack *get_smallest_bigger_node(t_stack *stack, int index)
+{
+    t_stack *smallest_bigger_node;
+
+    smallest_bigger_node = NULL;
+    while (stack)
+    {
+        if (stack->index > index && (!smallest_bigger_node || stack->index < smallest_bigger_node->index))
+            smallest_bigger_node = stack;
+        stack = stack->next;
+    }
+    return smallest_bigger_node;
+}

@@ -59,7 +59,8 @@ void    set_cost(t_stack **a, t_stack **b);
 void	shortest_path(t_stack **a, t_stack **b);
 void	sort_stack(t_stack **stack_a, t_stack **stack_b);
 int	    get_lowest_position(t_stack **stack);
-int	abs_v(int n);
+int	    abs_v(int n);
+t_stack *get_smallest_bigger_node(t_stack *stack, int inde);
 
 
 #endif
