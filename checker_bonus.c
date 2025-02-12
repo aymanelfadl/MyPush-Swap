@@ -1,5 +1,14 @@
 #include "push_swap.h"
 
+void	print_error(t_stack **A, t_stack **B, char *op)
+{
+	free(op);
+	free_stack(*A);
+	free_stack(*B);
+	write(2, "Error\n", 6);
+	exit(EXIT_FAILURE);
+}
+
 void	check_moves(t_stack **A, t_stack **B, char *op)
 {
 	if (!ft_strncmp(op, "pa\n", 3))
@@ -25,28 +34,31 @@ void	check_moves(t_stack **A, t_stack **B, char *op)
 	else if (!ft_strncmp(op, "rrr\n", 3))
 		rrr(A, B);
 	else
-		(free(op), stack_clear(A), stack_clear(B), ft_error());
+		print_error(A, B, op);
 }
 
-int	main(int ac, char **av)
+int	main(int argc, char *argv[])
 {
-	t_stack	*a;
-	t_stack	*b;
-	char	*op;
+	t_stack	*stack_a;
+	t_stack	*stack_b;
+	char	*operations;
 
-	
-	b = NULL;
-	op = get_next_line(0);
-	while (op)
+	if (argc == 1)
+		return 0;
+	args_parser(argc - 1, &argv[1], &stack_a);
+	stack_b = NULL;
+	operations = get_next_line(0);
+	while (operations)
 	{
-		check_moves(&a, &b, op);
-		free(op);
-		op = get_next_line(0);
+		check_moves(&stack_a, &stack_b, operations);
+		free(operations);
+		operations = get_next_line(0);
 	}
-	if (is_sorted(a) && !b)
+	if (is_sorted(stack_a) && !stack_b)
 		write(1, "OK\n", 3);
 	else
 		write(1, "KO\n", 3);
-	free_stack(&a);
-	free_stack(&b);
-}
+	free_stack(stack_a);
+	free_stack(stack_b);
+	return 0;
+}	
