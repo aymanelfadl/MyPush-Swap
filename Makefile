@@ -34,10 +34,12 @@ $(GETNEXTLINE):
 clean:
 	rm -f $(OBJS) $(BOBJS)
 	make -C $(LIBFT_DIR) clean
+	make -C $(GETNEXTLINEDIR) clean
 
 fclean: clean
 	rm -f $(NAME) checker
 	make -C $(LIBFT_DIR) fclean
+	make -C $(GETNEXTLINEDIR) fclean
 
 re: fclean all
 
