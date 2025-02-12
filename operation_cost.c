@@ -7,15 +7,15 @@ int abs_v(int n)
     return (n);
 }
 
-void set_cost(t_stack **a, t_stack **b)
+void set_cost(t_stack **stack_a, t_stack **stack_b)
 {
     t_stack *tmp_b;
     int size_a;
     int size_b;
 
-    tmp_b = *b;
-    size_a = stack_size(*a);
-    size_b = stack_size(*b);
+    tmp_b = *stack_b;
+    size_a = stack_size(*stack_a);
+    size_b = stack_size(*stack_b);
     while (tmp_b)
     {
         if (tmp_b->position > size_b / 2)

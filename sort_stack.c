@@ -45,8 +45,6 @@ void	sort_three(t_stack **stack_a)
 {
 	int	max;
 
-	if (!*stack_a || !(*stack_a)->next || !(*stack_a)->next->next)
-		return ;
 	max = get_max_index(*stack_a);
 	if ((*stack_a)->index == max)
 		ra(stack_a, 1);
