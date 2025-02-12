@@ -34,11 +34,7 @@ int	main(int ac, char **av)
 	t_stack	*b;
 	char	*op;
 
-	if (ac == 1)
-		ft_error();
-	a = check_args(ac, av);
-	if (!a)
-		ft_error();
+	
 	b = NULL;
 	op = get_next_line(0);
 	while (op)
@@ -51,6 +47,6 @@ int	main(int ac, char **av)
 		write(1, "OK\n", 3);
 	else
 		write(1, "KO\n", 3);
-	stack_clear(&a);
-	stack_clear(&b);
+	free_stack(&a);
+	free_stack(&b);
 }
