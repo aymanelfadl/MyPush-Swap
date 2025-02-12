@@ -36,5 +36,4 @@ int main(int argc, char *argv[])
     printf("stack_b:\n");
     print_stack(stack_b);
 
-    
 }

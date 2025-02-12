@@ -6,6 +6,7 @@
 # include "libft/libft.h"
 # include <stdio.h>
 # include <math.h>
+# include "getNextLine/get_next_line.h"
 
 typedef struct s_stack
 {
