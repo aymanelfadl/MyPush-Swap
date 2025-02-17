@@ -64,13 +64,16 @@ void args_parser(int argc, char *argv[], t_stack **stack_a)
 {
     char **values;
     int i;
-    
+
     i = 0;
     while (i < argc)
     {
         values = ft_split(argv[i], ' ');
         if (!values)
+        {
+            free(values);
             error_cleanup(NULL, *stack_a);
+        }
         create_value(values, stack_a);
         i++;
     }
