@@ -69,7 +69,7 @@ void args_parser(int argc, char *argv[], t_stack **stack_a)
     while (i < argc)
     {
         values = ft_split(argv[i], ' ');
-        if (!values)
+        if (!values || !values[0])
         {
             free(values);
             error_cleanup(NULL, *stack_a);
