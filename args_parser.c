@@ -16,8 +16,6 @@ static int is_valide_number(char *value)
     int i;
     
     i = 0;
-    if (!value || !*value)
-        return (0);
     if (value[i] == '-' || value[i] == '+')
         i++;
     if (!value[i])
@@ -37,14 +35,12 @@ static void create_value(char **values, t_stack **stack_a)
     long value;
 
     i = -1;
-    if (!values)
-        return;
     while (values[++i] != NULL)
     {
         if (is_valide_number(values[i]))
         {
             value = my_atoi(values[i]);
-            if (value > INT_MAX || value < INT_MIN)
+            if (value == ((long)INT_MAX + 1))
                 error_cleanup(values, *stack_a);
             if (!has_value(*stack_a, (int)value))
                 add_back(stack_a, new_node((int)value));

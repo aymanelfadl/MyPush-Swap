@@ -28,6 +28,8 @@ long my_atoi(const char *str)
     while (str[i] >= '0' && str[i] <= '9')
     {
         sum = sum * 10 + (str[i] - '0');
+        if (sum > INT_MAX || sum < INT_MIN)
+            return ((long)INT_MAX + 1);
         i++;
     }
     return (sum * si);

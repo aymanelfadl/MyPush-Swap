@@ -72,7 +72,7 @@ void apply_op(t_stack **a, t_stack **b, int cost_a, int cost_b)
         ra(a, 1);
         cost_a--;
     }
-    pa(a, b);
+    pa(a, b, 1);
 }
 
 

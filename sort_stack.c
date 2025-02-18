@@ -26,7 +26,7 @@ void push_to_stack_b(t_stack **stack_a, t_stack **stack_b)
     {
         if ((*stack_a)->index < mid)
         {
-            pb(stack_a, stack_b);
+            pb(stack_a, stack_b, 1);
             pushed++;
         }
         else
@@ -35,7 +35,7 @@ void push_to_stack_b(t_stack **stack_a, t_stack **stack_b)
     }
     while (size > 3)
     {
-        pb(stack_a, stack_b);
+        pb(stack_a, stack_b, 1);
         size = stack_size(*stack_a);
     }
 }

@@ -31,9 +31,4 @@ int main(int argc, char *argv[])
     set_index(&stack_a);
     set_index(&stack_b);
     sort_stack(&stack_a, &stack_b);
-    // printf("stack_a:\n");
-    // print_stack(stack_a);
-    // printf("stack_b:\n");
-    // print_stack(stack_b);
-
 }

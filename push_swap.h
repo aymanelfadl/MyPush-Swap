@@ -29,8 +29,8 @@ int				stack_size(t_stack *stack);
 
 
 // operations 
-void    		pa(t_stack **stack_a, t_stack **stack_b);
-void	    	pb(t_stack **stack_a, t_stack **stack_b);
+void    		pa(t_stack **stack_a, t_stack **stack_b, int print);
+void	    	pb(t_stack **stack_a, t_stack **stack_b, int print);
 
 void 			sa(t_stack **stack_a, int print);
 void 			sb(t_stack **stack_b, int print);

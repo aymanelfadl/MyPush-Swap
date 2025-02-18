@@ -12,9 +12,9 @@ void	print_error(t_stack **A, t_stack **B, char *op)
 void	check_moves(t_stack **A, t_stack **B, char *op)
 {
 	if (!ft_strncmp(op, "pa\n", 3))
-		pa(A, B);
+		pa(A, B, 0);
 	else if (!ft_strncmp(op, "pb\n", 3))
-		pb(A, B);
+		pb(A, B, 0);
 	else if (!ft_strncmp(op, "sa\n", 3))
 		sa(A, 0);
 	else if (!ft_strncmp(op, "sb\n", 3))
@@ -43,10 +43,9 @@ int	main(int argc, char *argv[])
 	t_stack	*stack_b;
 	char	*operations;
 
-	if (argc == 1)
-		return 0;
-	args_parser(argc - 1, &argv[1], &stack_a);
+	stack_a = NULL;
 	stack_b = NULL;
+	args_parser(argc - 1, &argv[1], &stack_a);
 	operations = get_next_line(0);
 	while (operations)
 	{
