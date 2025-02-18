@@ -44,7 +44,7 @@ void	sb(t_stack **stack_b, int print)
 		write(1, "sb\n", 3);
 }
 
-void	ss(t_stack **stack_a, t_stack **stack_b)
+void	ss(t_stack **stack_a, t_stack **stack_b, int print)
 {
 	int	print_a;
 	int	print_b;
@@ -61,6 +61,6 @@ void	ss(t_stack **stack_a, t_stack **stack_b)
 		sb(stack_b, 0);
 		print_b = 1;
 	}
-	if (print_a || print_b)
+	if (print && (print_a || print_b))
 		write(1, "ss\n", 3);
 }

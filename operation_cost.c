@@ -47,13 +47,13 @@ void	rotate_stack(t_stack **stack_a, t_stack **stack_b, int *cost_a,
 {
 	while (*cost_a < 0 && *cost_b < 0)
 	{
-		rrr(stack_a, stack_b);
+		rrr(stack_a, stack_b, 1);
 		(*cost_a)++;
 		(*cost_b)++;
 	}
 	while (*cost_a > 0 && *cost_b > 0)
 	{
-		rr(stack_a, stack_b);
+		rr(stack_a, stack_b, 1);
 		(*cost_a)--;
 		(*cost_b)--;
 	}

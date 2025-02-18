@@ -32,19 +32,19 @@ void	check_moves(t_stack **A, t_stack **B, char *op)
 	else if (!ft_strncmp(op, "sb\n", 3))
 		sb(B, 0);
 	else if (!ft_strncmp(op, "ss\n", 3))
-		ss(A, B);
+		ss(A, B, 0);
 	else if (!ft_strncmp(op, "ra\n", 3))
 		ra(A, 0);
 	else if (!ft_strncmp(op, "rb\n", 3))
 		rb(B, 0);
 	else if (!ft_strncmp(op, "rr\n", 3))
-		rr(A, B);
+		rr(A, B, 0);
 	else if (!ft_strncmp(op, "rra\n", 3))
 		rra(A, 0);
 	else if (!ft_strncmp(op, "rrb\n", 3))
 		rrb(B, 0);
 	else if (!ft_strncmp(op, "rrr\n", 3))
-		rrr(A, B);
+		rrr(A, B, 0);
 	else
 		print_error(A, B, op);
 }

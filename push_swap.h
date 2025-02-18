@@ -44,13 +44,13 @@ void				pa(t_stack **stack_a, t_stack **stack_b, int print);
 void				pb(t_stack **stack_a, t_stack **stack_b, int print);
 void				sa(t_stack **stack_a, int print);
 void				sb(t_stack **stack_b, int print);
-void				ss(t_stack **stack_a, t_stack **stack_b);
+void				ss(t_stack **stack_a, t_stack **stack_b, int print);
 void				rb(t_stack **stack_b, int print);
 void				ra(t_stack **stack_a, int print);
-void				rr(t_stack **stack_a, t_stack **stack_b);
+void				rr(t_stack **stack_a, t_stack **stack_b, int print);
 void				rra(t_stack **stack_a, int print);
 void				rrb(t_stack **stack_b, int print);
-void				rrr(t_stack **stack_a, t_stack **stack_b);
+void				rrr(t_stack **stack_a, t_stack **stack_b, int print);
 
 // parsing functions:
 void				args_parser(int argc, char *argv[], t_stack **stack_a);
