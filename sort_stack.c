@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_stack.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aelfadl <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/18 17:47:08 by aelfadl           #+#    #+#             */
+/*   Updated: 2025/02/18 17:47:11 by aelfadl          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	is_sorted(t_stack *stack)
@@ -13,33 +25,32 @@ int	is_sorted(t_stack *stack)
 	return (1);
 }
 
-void push_to_stack_b(t_stack **stack_a, t_stack **stack_b)
+void	push_to_stack_b(t_stack **stack_a, t_stack **stack_b)
 {
-    int mid;
-    int pushed;
-    int size;
+	int	mid;
+	int	pushed;
+	int	size;
 
-    size = stack_size(*stack_a);
-    mid = size / 2;
-    pushed = 0;
-    while (pushed < mid && size > 3)
-    {
-        if ((*stack_a)->index < mid)
-        {
-            pb(stack_a, stack_b, 1);
-            pushed++;
-        }
-        else
-            ra(stack_a, 1);
-        size = stack_size(*stack_a); 
-    }
-    while (size > 3)
-    {
-        pb(stack_a, stack_b, 1);
-        size = stack_size(*stack_a);
-    }
+	size = stack_size(*stack_a);
+	mid = size / 2;
+	pushed = 0;
+	while (pushed < mid && size > 3)
+	{
+		if ((*stack_a)->index < mid)
+		{
+			pb(stack_a, stack_b, 1);
+			pushed++;
+		}
+		else
+			ra(stack_a, 1);
+		size = stack_size(*stack_a);
+	}
+	while (size > 3)
+	{
+		pb(stack_a, stack_b, 1);
+		size = stack_size(*stack_a);
+	}
 }
-
 
 void	sort_three(t_stack **stack_a)
 {
@@ -79,30 +90,29 @@ void	shift_stack(t_stack **stack_a)
 	}
 }
 
-void sort_stack(t_stack **stack_a, t_stack **stack_b)
+void	sort_stack(t_stack **stack_a, t_stack **stack_b)
 {
-    if (stack_size(*stack_a) == 1)
-        return;
-    if (stack_size(*stack_a) == 2)
-    {
-        if ((*stack_a)->value > (*stack_a)->next->value)
-            sa(stack_a, 1);
-        return;
-    }
-    if (stack_size(*stack_a) == 3)
-    {
-        sort_three(stack_a);
-        return;
-    }
-    push_to_stack_b(stack_a, stack_b);
-    sort_three(stack_a);
-    while (*stack_b)
-    {   
-        set_target_position(stack_a, stack_b);
-        set_cost(stack_a, stack_b);
-        shortest_path(stack_a, stack_b);
-    }
-    if (!is_sorted(*stack_a))
-        shift_stack(stack_a);
+	if (stack_size(*stack_a) == 1)
+		return ;
+	if (stack_size(*stack_a) == 2)
+	{
+		if ((*stack_a)->value > (*stack_a)->next->value)
+			sa(stack_a, 1);
+		return ;
+	}
+	if (stack_size(*stack_a) == 3)
+	{
+		sort_three(stack_a);
+		return ;
+	}
+	push_to_stack_b(stack_a, stack_b);
+	sort_three(stack_a);
+	while (*stack_b)
+	{
+		set_target_position(stack_a, stack_b);
+		set_cost(stack_a, stack_b);
+		shortest_path(stack_a, stack_b);
+	}
+	if (!is_sorted(*stack_a))
+		shift_stack(stack_a);
 }
-

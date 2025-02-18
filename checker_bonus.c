@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checker_bonus.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aelfadl <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/18 17:44:10 by aelfadl           #+#    #+#             */
+/*   Updated: 2025/02/18 17:44:13 by aelfadl          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	print_error(t_stack **A, t_stack **B, char *op)
@@ -59,5 +71,5 @@ int	main(int argc, char *argv[])
 		write(1, "KO\n", 3);
 	free_stack(stack_a);
 	free_stack(stack_b);
-	return 0;
-}	
+	return (0);
+}
