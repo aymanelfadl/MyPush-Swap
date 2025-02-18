@@ -26,7 +26,7 @@ void			add_front(t_stack **stack, t_stack *new_node);
 void			add_back(t_stack **stack, t_stack *new_node);
 void			free_stack(t_stack *stack);
 int				stack_size(t_stack *stack);
-
+void            print_stack(t_stack *stack);
 
 // operations 
 void    		pa(t_stack **stack_a, t_stack **stack_b, int print);
