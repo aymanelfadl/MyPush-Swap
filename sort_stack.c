@@ -81,7 +81,6 @@ void	shift_stack(t_stack **stack_a)
 
 void sort_stack(t_stack **stack_a, t_stack **stack_b)
 {
-    int index = 0;
     if (stack_size(*stack_a) == 1)
         return;
     if (stack_size(*stack_a) == 2)
@@ -99,14 +98,8 @@ void sort_stack(t_stack **stack_a, t_stack **stack_b)
     sort_three(stack_a);
     while (*stack_b)
     {   
-       
         set_target_position(stack_a, stack_b);
         set_cost(stack_a, stack_b);
-        index++;
-        printf("stack B in index %d =>\n", index);
-        print_stack(*stack_b);
-        printf("stack A in index %d =>\n", index);
-        print_stack(*stack_a);
         shortest_path(stack_a, stack_b);
     }
     if (!is_sorted(*stack_a))

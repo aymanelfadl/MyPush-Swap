@@ -24,7 +24,6 @@ int main(int argc, char *argv[])
 
     stack_a = NULL;
     stack_b = NULL;
-    
     if (argc == 1)
         return 0;
     args_parser(argc - 1, &argv[1], &stack_a);
