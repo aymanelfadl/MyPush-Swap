@@ -30,7 +30,7 @@ char	*get_after(char *buffer)
 	line_location = my_strchr(buffer, '\n');
 	if (!line_location)
 		return (NULL);
-	if(line_location[1] == '\0')
+	if (line_location[1] == '\0')
 		return (my_free(&buffer), NULL);
 	line_location++;
 	len = my_strlen(line_location);
