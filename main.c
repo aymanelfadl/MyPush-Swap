@@ -41,7 +41,7 @@ int	main(int argc, char *argv[])
 	if (argc == 1)
 		return (0);
 	args_parser(argc - 1, &argv[1], &stack_a);
-	if (is_sorted(stack_a))	
+	if (is_sorted(stack_a))
 		return (free_stack(stack_a), 0);
 	set_index(&stack_a);
 	set_index(&stack_b);

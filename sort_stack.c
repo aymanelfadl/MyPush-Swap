@@ -25,7 +25,7 @@ int	is_sorted(t_stack *stack)
 	return (1);
 }
 
-void	push_to_stack_b(t_stack **stack_a, t_stack **stack_b)
+static void	push_to_stack_b(t_stack **stack_a, t_stack **stack_b)
 {
 	int	mid;
 	int	pushed;
@@ -52,7 +52,7 @@ void	push_to_stack_b(t_stack **stack_a, t_stack **stack_b)
 	}
 }
 
-void	sort_three(t_stack **stack_a)
+static void	sort_three(t_stack **stack_a)
 {
 	int	max;
 
@@ -65,7 +65,7 @@ void	sort_three(t_stack **stack_a)
 		sa(stack_a, 1);
 }
 
-void	shift_stack(t_stack **stack_a)
+static void	shift_stack(t_stack **stack_a)
 {
 	int	lowest_pos;
 	int	size;

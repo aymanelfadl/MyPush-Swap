@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int	abs_v(int n)
+static int	abs_v(int n)
 {
 	if (n < 0)
 		return (n * -1);

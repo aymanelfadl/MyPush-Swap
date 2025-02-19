@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	set_position(t_stack **stack)
+static void	set_position(t_stack **stack)
 {
 	t_stack	*temp;
 	int		i;
