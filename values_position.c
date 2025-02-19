@@ -65,15 +65,13 @@ int	find_target_position(t_stack **a, int stack_b_idx)
 void	set_target_position(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*tmp_b;
-	int		target_pos;
-
+	
 	tmp_b = *stack_b;
 	set_position(stack_a);
 	set_position(stack_b);
 	while (tmp_b)
 	{
-		target_pos = find_target_position(stack_a, tmp_b->index);
-		tmp_b->target_position = target_pos;
+		tmp_b->target_position = find_target_position(stack_a, tmp_b->index);
 		tmp_b = tmp_b->next;
 	}
 }
