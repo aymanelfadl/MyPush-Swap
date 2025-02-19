@@ -85,7 +85,7 @@ void	apply_op(t_stack **a, t_stack **b, int cost_a, int cost_b)
 	pa(a, b, 1);
 }
 
-void	shortest_path(t_stack **a, t_stack **b)
+void	shortest_path(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*tmp;
 	int		shortest_path;
@@ -93,7 +93,7 @@ void	shortest_path(t_stack **a, t_stack **b)
 	int		cost_b;
 	int		total_cost;
 
-	tmp = *b;
+	tmp = *stack_b;
 	shortest_path = INT_MAX;
 	cost_a = 0;
 	cost_b = 0;
@@ -108,5 +108,5 @@ void	shortest_path(t_stack **a, t_stack **b)
 		}
 		tmp = tmp->next;
 	}
-	apply_op(a, b, cost_a, cost_b);
+	apply_op(stack_a, stack_b, cost_a, cost_b);
 }

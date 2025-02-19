@@ -44,4 +44,6 @@ int	main(int argc, char *argv[])
 	set_index(&stack_a);
 	set_index(&stack_b);
 	sort_stack(&stack_a, &stack_b);
+	free_stack(stack_a);
+	free_stack(stack_b);
 }
