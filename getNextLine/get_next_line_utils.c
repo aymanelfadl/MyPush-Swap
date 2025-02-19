@@ -21,8 +21,8 @@ void	*my_calloc(size_t num_elements, size_t element_size)
 	if (num_elements != 0 && SIZE_MAX / num_elements < element_size)
 		return (NULL);
 	total_size = num_elements * element_size;
-	if (total_size == 0)
-		total_size = 1;
+	if (total_size == 1 || total_size == 0)
+		return (NULL);
 	ptr = malloc(total_size);
 	if (!ptr)
 		return (NULL);
