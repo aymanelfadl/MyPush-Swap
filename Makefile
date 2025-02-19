@@ -1,4 +1,6 @@
 NAME = push_swap
+NAME_BONUS = checker
+
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
@@ -22,8 +24,10 @@ all: $(NAME)
 $(NAME): $(OBJS) $(LIBFT) $(GETNEXTLINE)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -L$(LIBFT_DIR) -lft
 	
-bonus: $(BOBJS) $(GETNEXTLINE) $(LIBFT)
-	$(CC) $(CFLAGS) -o checker $(BOBJS) -L$(LIBFT_DIR) -lft -L$(GETNEXTLINEDIR) -lgnl
+bonus: $(NAME_BONUS)
+
+$(NAME_BONUS): $(BOBJS) $(GETNEXTLINE) $(LIBFT)
+	$(CC) $(CFLAGS) -o $(NAME_BONUS) $(BOBJS) -L$(LIBFT_DIR) -lft -L$(GETNEXTLINEDIR) -lgnl
 
 $(LIBFT):
 	make -C $(LIBFT_DIR)
@@ -37,7 +41,7 @@ clean:
 	make -C $(GETNEXTLINEDIR) clean
 
 fclean: clean
-	rm -f $(NAME) checker
+	rm -f $(NAME) $(NAME_BONUS)
 	make -C $(LIBFT_DIR) fclean
 	make -C $(GETNEXTLINEDIR) fclean
 
